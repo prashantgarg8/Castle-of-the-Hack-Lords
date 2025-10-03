@@ -87,4 +87,10 @@ You explore a mysterious castle, collect coins, fight enemies, and prepare for t
 
 ---
 
+##  Winning the Game
+When you defeat the final boss and survive the castle, the game displays a **winning message** like this:
+
+### Example Screenshot
+![castle](castle.png)
+
 
