@@ -29,6 +29,7 @@ Survive all castle rooms to win the game!
 ```bash
 g++ castle_adventure.cpp -o castle_adventure
 
+
 ===== CASTLE ADVENTURE RPG =====
 
                           |>>>                    |>>>
@@ -52,3 +53,38 @@ g++ castle_adventure.cpp -o castle_adventure
              | |_|  | () |  | || |_|  | |_| |  | () |  | |_| ||
              |      \__/   _|_||      \____/   \__/   _|      ||
              |_______________________________________________|
+
+```
+## 💰 Coin System
+
+Coins are an important part of the game.  
+Players can **earn coins** and **spend them in the shop** for survival and upgrades.
+
+### How to Get Coins
+- Winning battles against enemies  
+- Discovering treasure rooms  
+- Receiving random gifts from NPCs  
+- Exploring special rooms that grant coin rewards  
+
+### How to Use Coins
+Coins can be spent in the **Shop**:
+- Buy **Potions** to restore health during fights  
+- Pay for **Healing** to regain HP instantly  
+- Upgrade your **Sword** to deal more damage  
+
+### Strategy Tip
+- Save coins early on for healing and potions.  
+- Investing in a **Sword Upgrade** before the final boss increases your chance of victory.  
+
+# 🏰 Castle Adventure RPG
+
+![Language](https://img.shields.io/badge/language-C++-blue.svg)
+![Type](https://img.shields.io/badge/game-Text--based-lightgrey.svg)
+![Status](https://img.shields.io/badge/status-Completed-brightgreen.svg)
+
+A simple **text-based RPG** made with **C++**.  
+You explore a mysterious castle, collect coins, fight enemies, and prepare for the final boss battle.  
+
+---
+
+
