@@ -4,7 +4,6 @@
 #include <string>
 using namespace std;
 
-
 struct Player {
     string name;
     int health;
@@ -22,6 +21,32 @@ struct Player {
         hasSword = false;
     }
 };
+//cute ascii art hehe
+void printCastleArt() {
+    cout << R"(
+                          |>>>                    |>>>
+                          |                        |
+                      _  _|_  _                _  _|_  _
+                     |;|_|;|_|;|              |;|_|;|_|;|
+                     \\.    .  /              \\.    .  /
+                      \\:  .  /                \\:  .  /
+                       ||:   |                  ||:   |
+                       ||:.  |                  ||:.  |
+                       ||:  .|                  ||:  .|
+                       ||:   |                  ||:   |
+                       ||: , |                  ||: , |
+                      _||_   |      CASTLE     _||_   |
+                 __  /____\  |   __        __  /____\  |  __
+                /  \/      \ |  /  \  /\  /  \/      \ | /  \
+               /  /\        \| / /\ \/  \/ /\        \|/ /\ \
+              /__/  \________/__/  \______ /  \_________/  \__\
+             |  _     __     _ |  _    _   _     __     _    _ |
+             | | |   /  \   | || | |  | | | |   /  \   | |  | ||
+             | |_|  | () |  | || |_|  | |_| |  | () |  | |_| ||
+             |      \__/   _|_||      \____/   \__/   _|      ||
+             |_______________________________________________|
+    )" << '\n';
+}
 
 void status(const Player &p) {
     cout << "\n--- STATUS ---\n";
@@ -91,6 +116,7 @@ void npcRoom(Player &p) {
 }
 
 void fightRoom(Player &p) {
+    //random xp handling 
     int enemyHP = 30 + rand() % 30;
     int enemyAtk = 10 + rand() % 11;
     int reward = 15 + rand() % 16;
@@ -141,7 +167,7 @@ void healRoom(Player &p) {
     heal(p, 25);
     p.roomsCleared++;
 }
-
+//bugged rn need to work 
 
 void keyRoom(Player &p) {
     pickKey(p);
@@ -159,7 +185,6 @@ void potionRoom(Player &p) {
 }
 
 void bossRoom(Player &p) {
-
     cout << "You encounter the final boss!\n";
     int bossHP = 80;
     int bossAtk = 25;
@@ -191,7 +216,7 @@ void bossRoom(Player &p) {
 }
 
 void printMenu() {
-    cout << "\n1. Move to Next Room\n2. Use Potion\n3. Show Status\n4. Quit\n";
+    cout << "\n1. Move to Next Room\n2. Use Potion\n3. Show Status\n4. Quit\n5.Shop\n";
 }
 
 void roomRandom(Player &p) {
@@ -203,11 +228,44 @@ void roomRandom(Player &p) {
     else if (type == 4) potionRoom(p);
     else if (type == 5) swordRoom(p);
 }
+void shop(Player &p) {
+    cout << "\n=== Castle Shop ===\n";
+    cout << "You have " << p.coins << " coins.\n";
+    cout << "1. Buy Potion (30 coins)\n";
+    cout << "2. Heal (+50 HP for 40 coins)\n";
+    cout << "3. Buy Sword Upgrade (50 coins)\n";
+    cout << "4. Exit Shop\n";
+    cout << "5. Visit Shop\n";
 
+    int choice; cin >> choice;
+    switch (choice) {
+        case 1:
+            if (p.coins >= 30) {
+                p.coins -= 30;
+                pickPotion(p);
+            } else cout << "Not enough coins!\n";
+            break;
+        case 2:
+            if (p.coins >= 40) {
+                p.coins -= 40;
+                heal(p, 50);
+            } else cout << "Not enough coins!\n";
+            break;
+        case 3:
+            if (p.coins >= 50) {
+                p.coins -= 50;
+                p.hasSword = true;
+                cout << "You upgraded/bought a sword!\n";
+            } else cout << "Not enough coins!\n";
+            break;
+        default: cout << "Leaving the shop.\n"; break;
+    }
+}
 int main() {
     srand(time(0));
     Player p;
-    cout << "===== CASTLE ADVENTURE RPG =====\n";
+    cout << "===== Castle-of-the-Hack-Lords =====\n\n";
+    printCastleArt();
     cout << "Enter your name: ";
     getline(cin, p.name);
     cout << "\nWelcome, " << p.name << "!\n";
@@ -228,16 +286,21 @@ int main() {
         } else if (menu == 4) {
             cout << "You left the castle.\n"; break;
         }
+        else if (menu == 5) {
+    shop(p);
+}
+
         if (p.health <= 0) {
-            cout << "Game Over!\n";
+            cout<<"Game Over!\n";
+
             break;
         }
     }
     if (p.health > 0 && moves >= 20) {
-        cout << "\n=== Congratulations, You beat the game! ===\n";
+        cout <<"Congratulations, You beat the game!"<<endl;
+        printCastleArt();
         status(p);
     }
-    cout << "\n--- Thanks for playing! ---\n";
+    cout << "Thanks for playing!"<<endl;
     return 0;
 }
-
