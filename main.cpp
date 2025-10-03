@@ -21,7 +21,7 @@ struct Player {
         hasSword = false;
     }
 };
-//cute ascii art hehe
+//cute ascii art hehe, used ai here a bit for padding
 void printCastleArt() {
     cout << R"(
                           |>>>                    |>>>
@@ -116,7 +116,6 @@ void npcRoom(Player &p) {
 }
 
 void fightRoom(Player &p) {
-    //random xp handling 
     int enemyHP = 30 + rand() % 30;
     int enemyAtk = 10 + rand() % 11;
     int reward = 15 + rand() % 16;
@@ -167,7 +166,6 @@ void healRoom(Player &p) {
     heal(p, 25);
     p.roomsCleared++;
 }
-//bugged rn need to work 
 
 void keyRoom(Player &p) {
     pickKey(p);
