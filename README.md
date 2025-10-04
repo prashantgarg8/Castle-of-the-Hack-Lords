@@ -27,7 +27,7 @@ Survive all castle rooms to win the game!
 
 ### 1. Compile the game
 ```bash
-g++ castle_adventure.cpp -o castle_adventure
+g++ main.cpp -o main
 
 
 ===== CASTLE ADVENTURE RPG =====
